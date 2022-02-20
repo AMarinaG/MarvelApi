@@ -24,10 +24,7 @@ fun AMGMarvelApp() {
                     .fillMaxSize(),
                 color = MaterialTheme.colors.background
             ) {
-                Box(modifier = Modifier.fillMaxSize()) {
-                    Text(text = "Hola hola", modifier = Modifier.align(Alignment.TopCenter))
-                    Text(text = "Hola hola", modifier = Modifier.align(Alignment.BottomCenter))
-                }
+                AMGMarvelNavGraph()
             }
         }
     }
