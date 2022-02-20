@@ -1,7 +1,7 @@
 package com.amarinag.marvelapi.ui
 
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -15,7 +15,7 @@ fun AMGMarvelNavGraph(
 ) {
     NavHost(navController = navController, startDestination = AMGMarvelDestionations.HOME_ROUTE) {
         composable(AMGMarvelDestionations.HOME_ROUTE) {
-            val vm: HomeViewModel = viewModel()
+            val vm: HomeViewModel = hiltViewModel()
             HomeRoute(vm)
         }
 
