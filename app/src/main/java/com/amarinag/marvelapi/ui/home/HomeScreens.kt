@@ -8,8 +8,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
-fun HomeGridCharacterScreen() {
+fun HomeGridCharacterScreen(uiState: HomeUiState) {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text(text = "Wellcome To HomeGridCharacterScreen")
+        Text(text = "uiState: ${uiState.isLoading}")
     }
 }
