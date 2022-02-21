@@ -21,8 +21,12 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideOkhttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient =
-        OkHttpClient.Builder().addInterceptor(loggingInterceptor).build()
+    fun provideOkhttpClient(
+        loggingInterceptor: HttpLoggingInterceptor,
+        marvelAuthInterceptor: MarvelAuthInterceptor
+    ): OkHttpClient =
+        OkHttpClient.Builder().addInterceptor(loggingInterceptor)
+            .addInterceptor(marvelAuthInterceptor).build()
 
     @Singleton
     @Provides

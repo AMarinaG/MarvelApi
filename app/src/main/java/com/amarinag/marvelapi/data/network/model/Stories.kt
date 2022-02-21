@@ -1,7 +1,6 @@
-package com.amarinag.marvelapi.data.network.response
+package com.amarinag.marvelapi.data.network.model
 
 
-import com.amarinag.marvelapi.data.network.response.Item
 import com.google.gson.annotations.SerializedName
 
 data class Stories(
