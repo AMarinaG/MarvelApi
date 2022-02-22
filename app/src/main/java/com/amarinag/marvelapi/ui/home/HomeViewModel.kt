@@ -22,7 +22,6 @@ class HomeViewModel @Inject constructor(private val characterRepository: Charact
 
     init {
         viewModelScope.launch {
-            delay(2000)
             _uiState.update { it.copy(isLoading = false) }
             characterRepository.getAll().fold(::onSuccess, ::onFailure)
         }
