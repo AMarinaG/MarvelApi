@@ -1,13 +1,14 @@
 package com.amarinag.marvelapi.data.network.model
 
 
+import com.amarinag.marvelapi.domain.model.Character
 import com.google.gson.annotations.SerializedName
 
 data class CharacterResponse(
     @SerializedName("id")
-    val id: Int?, // 1011334
+    val id: Long, // 1011334
     @SerializedName("name")
-    val name: String?, // 3-D Man
+    val name: String, // 3-D Man
     @SerializedName("description")
     val description: String?,
     @SerializedName("modified")
@@ -27,3 +28,6 @@ data class CharacterResponse(
     @SerializedName("urls")
     val urls: List<Url>?
 )
+
+fun CharacterResponse.toModel(): Character = Character(id, name)
+fun List<CharacterResponse>?.toModel(): List<Character> = this?.map { it.toModel() } ?: emptyList()
