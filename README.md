@@ -19,6 +19,21 @@ And run gradle install for open on your device
 ./gradlew iD
 ```
 
+### Stack
+[X] Architecture MVVM
+[X] New Recommended Google Architecture
+[X] Using Flows
+[X] Offline mode with Room
+[X] Hilt
+[X] UseCases
+[ ] Unit Test coverage 0%
+[ ] Integration Test coverage 0%
+[ ] UI Test coverage 0%
+[ ] Pagination
+[X] Jetpack Compose
+[ ] mock / pro flavor
+
+
 
 ### Used plugins
 

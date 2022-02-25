@@ -1,6 +1,7 @@
 package com.amarinag.marvelapi.data.network.model
 
 
+import com.amarinag.marvelapi.data.db.entity.CharacterEntity
 import com.amarinag.marvelapi.domain.model.Character
 import com.google.gson.annotations.SerializedName
 
@@ -31,3 +32,6 @@ data class CharacterResponse(
 
 fun CharacterResponse.toModel(): Character = Character(id, name)
 fun List<CharacterResponse>?.toModel(): List<Character> = this?.map { it.toModel() } ?: emptyList()
+fun CharacterResponse.toEntity(): CharacterEntity = CharacterEntity(id, name)
+fun List<CharacterResponse>?.toEntity(): List<CharacterEntity> =
+    this?.map { it.toEntity() } ?: emptyList()
