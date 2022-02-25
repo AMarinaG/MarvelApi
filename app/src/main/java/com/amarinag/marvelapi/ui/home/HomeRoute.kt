@@ -7,7 +7,7 @@ import androidx.compose.runtime.getValue
 
 @ExperimentalFoundationApi
 @Composable
-fun HomeRoute(homeViewModel: HomeViewModel) {
+fun HomeRoute(homeViewModel: HomeViewModel, navigateToDetail: (Long) -> Unit) {
     val uiState by homeViewModel.uiState.collectAsState()
-    HomeScreenWithGrid(uiState)
+    HomeScreenWithGrid(uiState, navigateToDetail)
 }

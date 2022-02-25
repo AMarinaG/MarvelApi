@@ -1,6 +1,14 @@
 package com.amarinag.marvelapi.ui
 
-object AMGMarvelDestionations {
+import androidx.navigation.NavController
+
+object AMGMarvelDestinations {
     const val HOME_ROUTE = "home"
-    const val CHARACTER_DETAIL_ROUTE = "character_detail"
+    const val CHARACTER_DETAIL_ROUTE = "character"
+}
+
+class AMGNavigationActions(navController: NavController) {
+    val navigationToDetailCharacter: (Long) -> Unit = {
+        navController.navigate(route = AMGMarvelDestinations.CHARACTER_DETAIL_ROUTE)
+    }
 }
