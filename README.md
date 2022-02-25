@@ -26,9 +26,9 @@ And run gradle install for open on your device
 [X] Offline mode with Room
 [X] Hilt
 [X] UseCases
-[ ] Unit Test coverage 0%
-[ ] Integration Test coverage 0%
-[ ] UI Test coverage 0%
+[ ] Unit Test coverage
+[ ] Integration Test coverage
+[ ] UI Test coverage
 [ ] Pagination
 [X] Jetpack Compose
 [ ] mock / pro flavor
