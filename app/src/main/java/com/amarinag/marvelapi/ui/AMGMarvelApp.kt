@@ -1,5 +1,6 @@
 package com.amarinag.marvelapi.ui
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
@@ -13,6 +14,7 @@ import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.insets.navigationBarsPadding
 import com.google.accompanist.insets.statusBarsPadding
 
+@ExperimentalFoundationApi
 @Composable
 fun AMGMarvelApp() {
     AMGMarvelApiTheme {
