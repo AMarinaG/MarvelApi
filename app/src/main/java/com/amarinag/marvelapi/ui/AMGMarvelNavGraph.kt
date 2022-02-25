@@ -1,5 +1,6 @@
 package com.amarinag.marvelapi.ui
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
@@ -9,6 +10,7 @@ import androidx.navigation.compose.rememberNavController
 import com.amarinag.marvelapi.ui.home.HomeRoute
 import com.amarinag.marvelapi.ui.home.HomeViewModel
 
+@ExperimentalFoundationApi
 @Composable
 fun AMGMarvelNavGraph(
     navController: NavHostController = rememberNavController()

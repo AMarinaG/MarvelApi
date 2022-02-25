@@ -9,12 +9,14 @@ import com.amarinag.marvelapi.domain.model.Character
 data class CharacterEntity(
     @PrimaryKey
     val id: Long,
-    @ColumnInfo(name = "name") val name: String
+    @ColumnInfo(name = "name") val name: String,
+    @ColumnInfo(name = "image_url") val imageUrl: String?
 )
 
 
-fun CharacterEntity.toModel(): Character = Character(id, name)
+fun CharacterEntity.toModel(): Character = Character(id, name, imageUrl)
+
 fun List<CharacterEntity>?.toModel(): List<Character> = this?.map { it.toModel() } ?: emptyList()
 
-fun Character.toEntity(): CharacterEntity = CharacterEntity(id, name)
+fun Character.toEntity(): CharacterEntity = CharacterEntity(id, name, imageUrl)
 fun List<Character>?.toEntity(): List<CharacterEntity> = this?.map { it.toEntity() } ?: emptyList()
