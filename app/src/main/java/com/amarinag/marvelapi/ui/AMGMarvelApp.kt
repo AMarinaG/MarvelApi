@@ -29,7 +29,7 @@ fun AMGMarvelApp() {
                     .fillMaxSize(),
                 color = MaterialTheme.colors.background
             ) {
-                AMGMarvelNavGraph(navigationActions)
+                AMGMarvelNavGraph(navigationActions, navController)
             }
         }
     }

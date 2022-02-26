@@ -14,5 +14,11 @@ class CharacterLocalDataSource @Inject constructor(private val characterDao: Cha
         characterDao.findAll().map { Result.success(it) }
             .catch { Result.failure<List<CharacterEntity>>(it) }
 
+    suspend fun findById(characterId: Long) =
+        characterDao.findById(characterId)?.let {
+            Result.success(it)
+        } ?: Result.failure(IllegalArgumentException("Not found"))
+
+
     suspend fun save(characters: List<CharacterEntity>) = characterDao.save(characters)
 }

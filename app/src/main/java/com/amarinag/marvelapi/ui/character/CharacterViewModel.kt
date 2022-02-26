@@ -1,10 +1,10 @@
 package com.amarinag.marvelapi.ui.character
 
-import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.amarinag.marvelapi.domain.model.Character
+import com.amarinag.marvelapi.usecase.GetCharacterByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,18 +14,29 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CharacterViewModel @Inject constructor(private val stateHandle: SavedStateHandle) :
-    ViewModel() {
+class CharacterViewModel @Inject constructor(
+    private val getCharacterByIdUseCase: GetCharacterByIdUseCase,
+    private val stateHandle: SavedStateHandle
+) : ViewModel() {
     private val _uiState = MutableStateFlow(CharacterUiState(isLoading = true))
     val uiState = _uiState.asStateFlow()
 
     init {
         viewModelScope.launch {
-            delay(5000)
-            _uiState.update { it.copy(isLoading = false) }
-//            val characterId = stateHandle.get<Long>("characterId")
-//            Log.d("Test", "Character: $characterId")
+            stateHandle.get<Long>("characterId")?.let {
+                getCharacterByIdUseCase(it).fold(::onSuccess, ::onFailure)
+
+            } ?: _uiState.update { CharacterUiState(hasError = true) }
+
         }
+    }
+
+    private fun onSuccess(character: Character) {
+        _uiState.update { CharacterUiState(character = character) }
+    }
+
+    private fun onFailure(throwable: Throwable) {
+        _uiState.update { CharacterUiState(hasError = true) }
     }
 }
 

@@ -24,4 +24,14 @@ class CharacterRepository @Inject constructor(
         }
         return characterLocalDataSource.findAll().map { result -> result.map { it.toModel() } }
     }
+
+    suspend fun findById(characterId: Long): Result<Character> {
+        return characterLocalDataSource.findById(characterId).map { it.toModel() }.onFailure {
+            characterRemoteDataSource.getAll().onSuccess {
+                Result.success(it.data?.results?.first()?.toEntity())
+            }.onFailure {
+                Result.failure<Character>(IllegalArgumentException("something was wrong"))
+            }
+        }
+    }
 }

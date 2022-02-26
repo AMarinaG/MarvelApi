@@ -9,6 +9,6 @@ object AMGMarvelDestinations {
 
 class AMGNavigationActions(navController: NavController) {
     val navigationToDetailCharacter: (Long) -> Unit = {
-        navController.navigate(route = AMGMarvelDestinations.CHARACTER_DETAIL_ROUTE)
+        navController.navigate("${AMGMarvelDestinations.CHARACTER_DETAIL_ROUTE}/$it")
     }
 }

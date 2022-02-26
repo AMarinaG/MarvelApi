@@ -4,9 +4,11 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.amarinag.marvelapi.ui.character.CharacterRoute
 import com.amarinag.marvelapi.ui.character.CharacterViewModel
 import com.amarinag.marvelapi.ui.home.HomeRoute
@@ -28,11 +30,11 @@ fun AMGMarvelNavGraph(
         }
 
         composable(
-            route = AMGMarvelDestinations.CHARACTER_DETAIL_ROUTE,
-//            arguments = listOf(navArgument("characterId") {
-//                type = NavType.LongType
-//                defaultValue = 4L
-//            })
+            "${AMGMarvelDestinations.CHARACTER_DETAIL_ROUTE}/{characterId}",
+            arguments = listOf(navArgument("characterId") {
+                type = NavType.LongType
+                defaultValue = 4L
+            })
         ) {
             val vm: CharacterViewModel = hiltViewModel()
             CharacterRoute(characterViewModel = vm)

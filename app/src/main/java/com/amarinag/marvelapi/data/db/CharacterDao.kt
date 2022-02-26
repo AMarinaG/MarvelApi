@@ -12,6 +12,9 @@ interface CharacterDao {
     @Query("SELECT * FROM character")
     fun findAll(): Flow<List<CharacterEntity>>
 
+    @Query("SELECT * FROM character WHERE id = :characterId")
+    suspend fun findById(characterId: Long): CharacterEntity?
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun save(characters: List<CharacterEntity>)
 }
