@@ -2,6 +2,7 @@ package com.amarinag.marvelapi.data.repository
 
 import com.amarinag.marvelapi.data.db.entity.toModel
 import com.amarinag.marvelapi.data.network.model.toEntity
+import com.amarinag.marvelapi.data.network.model.toModel
 import com.amarinag.marvelapi.data.source.CharacterLocalDataSource
 import com.amarinag.marvelapi.data.source.CharacterRemoteDataSource
 import com.amarinag.marvelapi.domain.model.Character
@@ -25,13 +26,8 @@ class CharacterRepository @Inject constructor(
         return characterLocalDataSource.findAll().map { result -> result.map { it.toModel() } }
     }
 
-    suspend fun findById(characterId: Long): Result<Character> {
-        return characterLocalDataSource.findById(characterId).map { it.toModel() }.onFailure {
-            characterRemoteDataSource.getAll().onSuccess {
-                Result.success(it.data?.results?.first()?.toEntity())
-            }.onFailure {
-                Result.failure<Character>(IllegalArgumentException("something was wrong"))
-            }
+    suspend fun findById(characterId: Long): Result<Character> =
+        characterLocalDataSource.findById(characterId).map { it.toModel() }.recoverCatching {
+            characterRemoteDataSource.getById(characterId).getOrThrow().data?.results?.first()?.toModel()!!
         }
-    }
 }

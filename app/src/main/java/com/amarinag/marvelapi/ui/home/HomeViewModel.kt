@@ -29,7 +29,6 @@ class HomeViewModel @Inject constructor(private val getCharactersUseCase: GetCha
         _uiState.update {
             it.copy(isLoading = false, characters = data)
         }
-        Log.d("Retrofit", "data: $data")
     }
 
     private fun onFailure(throwable: Throwable) {

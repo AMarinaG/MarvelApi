@@ -9,6 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import androidx.navigation.navDeepLink
 import com.amarinag.marvelapi.ui.character.CharacterRoute
 import com.amarinag.marvelapi.ui.character.CharacterViewModel
 import com.amarinag.marvelapi.ui.home.HomeRoute
@@ -20,6 +21,7 @@ fun AMGMarvelNavGraph(
     navigationActions: AMGNavigationActions,
     navController: NavHostController = rememberNavController()
 ) {
+    val uri = "https://www.example.com"
     NavHost(navController = navController, startDestination = AMGMarvelDestinations.HOME_ROUTE) {
         composable(AMGMarvelDestinations.HOME_ROUTE) {
             val vm: HomeViewModel = hiltViewModel()
@@ -34,6 +36,11 @@ fun AMGMarvelNavGraph(
             arguments = listOf(navArgument("characterId") {
                 type = NavType.LongType
                 defaultValue = 4L
+            }
+            ),
+            deepLinks = listOf(navDeepLink {
+                uriPattern =
+                    "$uri/${AMGMarvelDestinations.CHARACTER_DETAIL_ROUTE}/{characterId}"
             })
         ) {
             val vm: CharacterViewModel = hiltViewModel()

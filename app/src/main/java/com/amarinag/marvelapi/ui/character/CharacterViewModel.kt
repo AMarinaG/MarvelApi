@@ -34,12 +34,13 @@ class CharacterViewModel @Inject constructor(
     }
 
     private fun onFailure(throwable: Throwable) {
-        _uiState.update { CharacterUiState(hasError = true) }
+        _uiState.update { CharacterUiState(hasError = true, error = throwable) }
     }
 }
 
 data class CharacterUiState(
     val isLoading: Boolean = false,
     val hasError: Boolean = false,
+    val error: Throwable? = null,
     val character: Character? = null
 )

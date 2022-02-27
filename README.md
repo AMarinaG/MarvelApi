@@ -34,6 +34,11 @@ And run gradle install for open on your device
 [ ] mock / pro flavor
 
 
+### DeepLink enabled
+
+```shell
+./adb shell am start -W -a android.intent.action.VIEW -d https://www.example.com/character/1009144 com.amarinag.marvelapi
+```
 
 ### Used plugins
 
