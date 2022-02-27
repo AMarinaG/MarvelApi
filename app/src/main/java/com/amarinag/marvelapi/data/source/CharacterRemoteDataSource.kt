@@ -14,7 +14,6 @@ class CharacterRemoteDataSource @Inject constructor(
     private val appDispatchers: AppDispatchers
 ) {
     suspend fun getAll(): Result<MarvelApiResponse> = withContext(appDispatchers.io) {
-        delay(5000)
         try {
             Result.success(marvelApiService.getAllCharacter())
         } catch (ex: Exception) {

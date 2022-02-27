@@ -22,7 +22,7 @@ import com.amarinag.marvelapi.domain.model.Character
 
 @ExperimentalFoundationApi
 @Composable
-fun HomeScreenWithGrid(uiState: HomeUiState) {
+fun HomeScreenWithGrid(uiState: HomeUiState, navigateToDetail: (Long) -> Unit) {
     val gridState = rememberLazyGridState()
     if (uiState.isLoading) {
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
@@ -33,7 +33,7 @@ fun HomeScreenWithGrid(uiState: HomeUiState) {
             CharacterList(
                 characters = uiState.characters,
                 gridState = gridState,
-                navigateToCharacterDetail = {},
+                navigateToCharacterDetail = navigateToDetail,
                 modifier = Modifier.padding(innerPadding)
             )
 
