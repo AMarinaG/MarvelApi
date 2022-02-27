@@ -6,7 +6,6 @@ import androidx.lifecycle.viewModelScope
 import com.amarinag.marvelapi.domain.model.Character
 import com.amarinag.marvelapi.usecase.GetCharacterByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -25,7 +24,6 @@ class CharacterViewModel @Inject constructor(
         viewModelScope.launch {
             stateHandle.get<Long>("characterId")?.let {
                 getCharacterByIdUseCase(it).fold(::onSuccess, ::onFailure)
-
             } ?: _uiState.update { CharacterUiState(hasError = true) }
 
         }

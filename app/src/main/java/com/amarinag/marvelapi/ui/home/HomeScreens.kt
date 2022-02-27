@@ -19,16 +19,13 @@ import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import coil.size.OriginalSize
 import com.amarinag.marvelapi.domain.model.Character
+import com.amarinag.marvelapi.ui.commons.LoadingContent
 
 @ExperimentalFoundationApi
 @Composable
 fun HomeScreenWithGrid(uiState: HomeUiState, navigateToDetail: (Long) -> Unit) {
     val gridState = rememberLazyGridState()
-    if (uiState.isLoading) {
-        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            Text(text = "uiState: ${uiState.isLoading}")
-        }
-    } else {
+    LoadingContent(loading = uiState.isLoading) {
         Scaffold { innerPadding ->
             CharacterList(
                 characters = uiState.characters,
@@ -36,9 +33,7 @@ fun HomeScreenWithGrid(uiState: HomeUiState, navigateToDetail: (Long) -> Unit) {
                 navigateToCharacterDetail = navigateToDetail,
                 modifier = Modifier.padding(innerPadding)
             )
-
         }
-
     }
 }
 

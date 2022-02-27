@@ -8,25 +8,23 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import coil.size.OriginalSize
 import com.amarinag.marvelapi.domain.model.Character
+import com.amarinag.marvelapi.ui.commons.LoadingContent
 
 @Composable
 fun CharacterScreen(uiState: CharacterUiState) {
-    if (uiState.isLoading) {
-        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            Text(text = "Loading")
+    LoadingContent(loading = uiState.isLoading) {
+        if (uiState.character != null) {
+            CharacterDetail(character = uiState.character)
+        } else {
+            Log.e("AMG", "HasError")
+
         }
-    } else if (uiState.character != null) {
-        CharacterDetail(character = uiState.character)
-    }
-    if (uiState.hasError) {
-        Log.e("AMG", "HasError")
     }
 }
 
