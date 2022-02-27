@@ -30,10 +30,12 @@ data class CharacterResponse(
     val urls: List<Url>?
 )
 
-fun CharacterResponse.toModel(): Character = Character(id, name, thumbnail?.imageUrl ?: "")
+fun CharacterResponse.toModel(): Character =
+    Character(id, name, description, thumbnail?.imageUrl ?: "")
+
 fun List<CharacterResponse>?.toModel(): List<Character> = this?.map { it.toModel() } ?: emptyList()
 fun CharacterResponse.toEntity(): CharacterEntity =
-    CharacterEntity(id, name, thumbnail?.imageUrl ?: "")
+    CharacterEntity(id, name, description, thumbnail?.imageUrl ?: "")
 
 fun List<CharacterResponse>?.toEntity(): List<CharacterEntity> =
     this?.map { it.toEntity() } ?: emptyList()
