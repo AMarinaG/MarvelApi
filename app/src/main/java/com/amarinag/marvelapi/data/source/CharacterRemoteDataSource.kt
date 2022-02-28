@@ -3,7 +3,6 @@ package com.amarinag.marvelapi.data.source
 import com.amarinag.marvelapi.data.network.MarvelApiService
 import com.amarinag.marvelapi.data.network.model.MarvelApiResponse
 import com.amarinag.marvelapi.di.AppDispatchers
-import com.amarinag.marvelapi.domain.model.error.NetworkThrowable
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -17,7 +16,7 @@ class CharacterRemoteDataSource @Inject constructor(
         try {
             Result.success(marvelApiService.getAllCharacter())
         } catch (ex: Exception) {
-            Result.failure(NetworkThrowable(ex))
+            Result.failure(IllegalArgumentException("Network Exception"))
         }
     }
 
@@ -27,7 +26,7 @@ class CharacterRemoteDataSource @Inject constructor(
                 val response = marvelApiService.getCharacterById(characterId)
                 Result.success(response)
             } catch (ex: Exception) {
-                Result.failure(NetworkThrowable(ex))
+                Result.failure(IllegalArgumentException("Network Exception"))
             }
         }
 }

@@ -1,4 +1,4 @@
-package com.amarinag.marvelapi.domain.model
+package com.amarinag.domain.model
 
 data class Character(
     val id: Long,

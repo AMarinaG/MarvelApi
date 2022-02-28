@@ -2,8 +2,6 @@ package com.amarinag.marvelapi.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.amarinag.marvelapi.domain.model.Character
-import com.amarinag.marvelapi.ui.commons.ThrowableProcessor
 import com.amarinag.marvelapi.usecase.GetCharactersUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,11 +10,11 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import com.amarinag.domain.model.Character
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val getCharactersUseCase: GetCharactersUseCase,
-    private val throwableProcessor: ThrowableProcessor
+    private val getCharactersUseCase: GetCharactersUseCase
 ) :
     ViewModel() {
     private val _uiState = MutableStateFlow(HomeUiState(isLoading = true))
@@ -39,7 +37,7 @@ class HomeViewModel @Inject constructor(
             HomeUiState(
                 hasError = true,
                 error = throwable,
-                errorMessage = throwableProcessor.proccess(throwable)
+                errorMessage = "throwableProcessor.proccess(throwable)"
             )
         }
     }

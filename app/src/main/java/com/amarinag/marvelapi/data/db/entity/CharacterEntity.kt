@@ -3,7 +3,7 @@ package com.amarinag.marvelapi.data.db.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.amarinag.marvelapi.domain.model.Character
+import com.amarinag.domain.model.Character
 
 @Entity(tableName = "character")
 data class CharacterEntity(
