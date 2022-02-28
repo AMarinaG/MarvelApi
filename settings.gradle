@@ -14,3 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "AMG - MarvelApi"
 include ':app'
+include ':domain'
+include ':data'

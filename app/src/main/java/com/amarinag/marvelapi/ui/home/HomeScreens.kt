@@ -18,8 +18,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import coil.size.OriginalSize
-import com.amarinag.marvelapi.domain.model.Character
 import com.amarinag.marvelapi.ui.commons.LoadingContent
+import com.amarinag.marvelapi.domain.model.Character
 
 @ExperimentalFoundationApi
 @Composable
