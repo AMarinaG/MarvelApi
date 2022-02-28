@@ -1,6 +1,6 @@
 package com.amarinag.marvelapi.usecase
 
-import com.amarinag.domain.model.Character
+import com.amarinag.marvelapi.domain.model.Character
 import com.amarinag.marvelapi.data.repository.CharacterRepository
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow

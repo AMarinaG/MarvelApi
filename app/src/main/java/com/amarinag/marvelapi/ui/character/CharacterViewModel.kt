@@ -3,7 +3,7 @@ package com.amarinag.marvelapi.ui.character
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.amarinag.domain.model.Character
+import com.amarinag.marvelapi.domain.model.Character
 import com.amarinag.marvelapi.usecase.GetCharacterByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

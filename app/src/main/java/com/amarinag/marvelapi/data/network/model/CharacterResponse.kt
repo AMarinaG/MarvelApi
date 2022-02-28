@@ -1,7 +1,7 @@
 package com.amarinag.marvelapi.data.network.model
 
 
-import com.amarinag.domain.model.Character
+import com.amarinag.marvelapi.domain.model.Character
 import com.amarinag.marvelapi.data.db.entity.CharacterEntity
 import com.google.gson.annotations.SerializedName
 

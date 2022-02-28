@@ -1,30 +1,33 @@
 package com.amarinag.marvelapi.data.source
 
+import com.amarinag.marvelapi.domain.model.Character
 import com.amarinag.marvelapi.data.network.MarvelApiService
-import com.amarinag.marvelapi.data.network.model.MarvelApiResponse
+import com.amarinag.marvelapi.data.network.model.toModel
 import com.amarinag.marvelapi.di.AppDispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class CharacterRemoteDataSource @Inject constructor(
+class MarvelCharacterRemoteDataSource @Inject constructor(
     private val marvelApiService: MarvelApiService,
     private val appDispatchers: AppDispatchers
-) {
-    suspend fun getAll(): Result<MarvelApiResponse> = withContext(appDispatchers.io) {
+) : CharacterRemoteDataSource {
+    override suspend fun getAll(): Result<List<Character>> = withContext(appDispatchers.io) {
         try {
-            Result.success(marvelApiService.getAllCharacter())
+            Result.success(marvelApiService.getAllCharacter().data?.results.toModel())
         } catch (ex: Exception) {
             Result.failure(IllegalArgumentException("Network Exception"))
         }
     }
 
-    suspend fun getById(characterId: Long): Result<MarvelApiResponse> =
+    override suspend fun getById(characterId: Long): Result<Character> =
         withContext(appDispatchers.io) {
             try {
                 val response = marvelApiService.getCharacterById(characterId)
-                Result.success(response)
+                response.data?.results?.first()?.toModel()?.let {
+                    Result.success(it)
+                } ?: Result.failure(IllegalArgumentException("Servar fails"))
             } catch (ex: Exception) {
                 Result.failure(IllegalArgumentException("Network Exception"))
             }
