@@ -6,6 +6,7 @@ import com.amarinag.marvelapi.data.network.model.toModel
 import com.amarinag.marvelapi.data.source.CharacterLocalDataSource
 import com.amarinag.marvelapi.data.source.CharacterRemoteDataSource
 import com.amarinag.marvelapi.domain.model.Character
+import com.amarinag.marvelapi.domain.model.error.MarvelApiThrowable
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
@@ -21,7 +22,7 @@ class CharacterRepository @Inject constructor(
         dataFromServer.onSuccess {
             characterLocalDataSource.save(it.data?.results.toEntity())
         }.onFailure {
-            Result.failure<List<Character>>(IllegalArgumentException("something was wrong"))
+            Result.failure<List<Character>>(MarvelApiThrowable())
         }
         return characterLocalDataSource.findAll().map { result -> result.map { it.toModel() } }
     }

@@ -1,9 +1,9 @@
 package com.amarinag.marvelapi.ui.home
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.amarinag.marvelapi.domain.model.Character
+import com.amarinag.marvelapi.ui.commons.ThrowableProcessor
 import com.amarinag.marvelapi.usecase.GetCharactersUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,7 +14,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(private val getCharactersUseCase: GetCharactersUseCase) :
+class HomeViewModel @Inject constructor(
+    private val getCharactersUseCase: GetCharactersUseCase,
+    private val throwableProcessor: ThrowableProcessor
+) :
     ViewModel() {
     private val _uiState = MutableStateFlow(HomeUiState(isLoading = true))
     val uiState = _uiState.asStateFlow()
@@ -32,7 +35,13 @@ class HomeViewModel @Inject constructor(private val getCharactersUseCase: GetCha
     }
 
     private fun onFailure(throwable: Throwable) {
-        Log.e("Retrofit", "throwable: $throwable", throwable)
+        _uiState.update {
+            HomeUiState(
+                hasError = true,
+                error = throwable,
+                errorMessage = throwableProcessor.proccess(throwable)
+            )
+        }
     }
 }
 
@@ -40,5 +49,7 @@ class HomeViewModel @Inject constructor(private val getCharactersUseCase: GetCha
 data class HomeUiState(
     val isLoading: Boolean = false,
     val hasError: Boolean = false,
+    val error: Throwable? = null,
+    val errorMessage: String? = null,
     val characters: List<Character>? = null
 )

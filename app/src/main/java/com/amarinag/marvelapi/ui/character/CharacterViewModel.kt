@@ -4,6 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.amarinag.marvelapi.domain.model.Character
+import com.amarinag.marvelapi.ui.commons.ThrowableProcessor
 import com.amarinag.marvelapi.usecase.GetCharacterByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,7 +16,8 @@ import javax.inject.Inject
 @HiltViewModel
 class CharacterViewModel @Inject constructor(
     private val getCharacterByIdUseCase: GetCharacterByIdUseCase,
-    private val stateHandle: SavedStateHandle
+    private val stateHandle: SavedStateHandle,
+    private val throwableProcessor: ThrowableProcessor
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(CharacterUiState(isLoading = true))
     val uiState = _uiState.asStateFlow()
@@ -34,7 +36,13 @@ class CharacterViewModel @Inject constructor(
     }
 
     private fun onFailure(throwable: Throwable) {
-        _uiState.update { CharacterUiState(hasError = true, error = throwable) }
+        _uiState.update {
+            CharacterUiState(
+                hasError = true,
+                error = throwable,
+                errorMessage = throwableProcessor.proccess(throwable)
+            )
+        }
     }
 }
 
@@ -42,5 +50,6 @@ data class CharacterUiState(
     val isLoading: Boolean = false,
     val hasError: Boolean = false,
     val error: Throwable? = null,
+    val errorMessage: String? = null,
     val character: Character? = null
 )

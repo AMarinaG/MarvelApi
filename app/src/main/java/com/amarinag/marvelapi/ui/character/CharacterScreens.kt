@@ -22,7 +22,7 @@ fun CharacterScreen(uiState: CharacterUiState) {
         if (uiState.character != null) {
             CharacterDetail(character = uiState.character)
         } else {
-            Log.e("AMG", "HasError <> ${uiState.error}")
+            Log.e("AMG", "HasError <> ${uiState.error} <> ${uiState.errorMessage}")
 
         }
     }

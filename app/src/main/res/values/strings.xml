@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AMG - MarvelApi</string>
+    <string name="error.generic_error">Unknown error</string>
+    <string name="error.marvel_api_problem">Problem with %</string>
+    <string name="error.network_error">Network error</string>
+    <string name="error.character_not_found">Character Not Found</string>
 </resources>
