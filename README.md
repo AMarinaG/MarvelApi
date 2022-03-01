@@ -20,18 +20,18 @@ And run gradle install for open on your device
 ```
 
 ### Stack
-[X] Architecture MVVM
-[X] New Recommended Google Architecture
-[X] Using Flows
-[X] Offline mode with Room
-[X] Hilt
-[X] UseCases
-[ ] Unit Test coverage
-[ ] Integration Test coverage
-[ ] UI Test coverage
-[ ] Pagination
-[X] Jetpack Compose
-[X] mock / pro flavor
+- [X] Architecture MVVM
+- [X] New Recommended Google Architecture
+- [X] Using Flows
+- [X] Offline mode with Room
+- [X] Hilt
+- [X] UseCases
+- [ ] Unit Test coverage
+- [ ] Integration Test coverage
+- [ ] UI Test coverage
+- [ ] Pagination WIP paging 3
+- [X] Jetpack Compose
+- [X] mock / pro flavor
 
 
 ### Test
