@@ -31,7 +31,17 @@ And run gradle install for open on your device
 [ ] UI Test coverage
 [ ] Pagination
 [X] Jetpack Compose
-[ ] mock / pro flavor
+[X] mock / pro flavor
+
+
+### Test
+WIP
+
+you can see a sample in "CharacterRepository" and "GetCharactersUseCase"
+
+## Mock flavor
+environment used for faster developer and probably test
+WIP MockWebServer
 
 
 ### DeepLink enabled

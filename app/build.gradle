@@ -52,6 +52,16 @@ android {
         resultsDir "$rootDir/test-results"
         unitTests.returnDefaultValues = true
     }
+    flavorDimensions 'environment'
+    productFlavors {
+        mock {
+            dimension 'environment'
+            applicationIdSuffix '.mock'
+        }
+        pro {
+            dimension 'environment'
+        }
+    }
 }
 secrets {
     propertiesFileName 'secrets.properties'
@@ -104,4 +114,6 @@ dependencies {
     implementation "com.google.accompanist:accompanist-insets:$accompanist_version"
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+
+    mockImplementation "com.squareup.okhttp3:mockwebserver:$mock_webservice_version"
 }

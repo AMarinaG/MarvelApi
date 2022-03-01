@@ -12,6 +12,7 @@ buildscript {
         coil_version = "1.4.0"
         mockk_version = "1.12.2"
         lottie_version = "5.0.1"
+        mock_webservice_version = "5.0.0-alpha.2"
 
     }
     dependencies {
