@@ -31,7 +31,7 @@ And run gradle install for open on your device
 [ ] UI Test coverage
 [ ] Pagination
 [X] Jetpack Compose
-[X] mock / pro flavor on branch feature/mock_flavor
+[X] mock / pro flavor
 
 
 ### Test
