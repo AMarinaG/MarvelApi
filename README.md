@@ -29,6 +29,7 @@ And run gradle install for open on your device
 - [X] Pagination
 - [X] Jetpack Compose
 - [X] mock / pro flavor
+- [ ] CallAdapter for Result<>
 
 
 ### Test

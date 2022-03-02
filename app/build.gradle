@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+    id "io.gitlab.arturbosch.detekt"
 }
 
 android {
@@ -66,6 +67,12 @@ android {
 secrets {
     propertiesFileName 'secrets.properties'
 
+}
+detekt {
+    buildUponDefaultConfig = true // preconfigure defaults
+    allRules = false // activate all available (even unstable) rules.
+    config = files("$rootDir/config/detekt.yml") // point to your custom config defining rules to run, overwriting default behavior
+    baseline = file("$rootDir/config/baseline.xml") // a way of suppressing issues before introducing detekt
 }
 dependencies {
     implementation project(path: ':data')

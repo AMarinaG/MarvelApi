@@ -16,7 +16,7 @@ class MarvelCharacterLocalDataSource(private val characterDao: CharacterDao) :
         try {
             emitAll(characterDao.findAll().map { Result.success(it.toModel()) })
         } catch (ex: Exception) {
-            emit(Result.failure(IllegalArgumentException("database error")))
+            emit(Result.failure(IllegalArgumentException("database error", ex)))
         }
     }
 

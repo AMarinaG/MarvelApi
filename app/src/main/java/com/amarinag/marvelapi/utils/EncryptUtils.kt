@@ -1,8 +1,10 @@
 package com.amarinag.marvelapi.utils
 
+import android.util.Log
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
+private const val FirstByte = 0xFF
 private fun String.toMd5(): String {
     val md5 = "MD5"
     try {
@@ -12,18 +14,18 @@ private fun String.toMd5(): String {
 
         val hexString = StringBuilder()
         for (aMessageDigest in messageDigest) {
-            var h = Integer.toHexString(0xFF and aMessageDigest.toInt())
+            var h = Integer.toHexString(FirstByte and aMessageDigest.toInt())
             while (h.length < 2) {
                 h = "0$h"
             }
             hexString.append(h)
         }
         return hexString.toString()
-    } catch (e: NoSuchAlgorithmException) {
-        e.printStackTrace()
+    } catch (nsae: NoSuchAlgorithmException) {
+        Log.e("Utils", "error: $nsae", nsae)
     }
     return ""
 }
 
 fun generateHash(time: Long, privateKey: String, publicKey: String): String =
-    "${time.toString()}$privateKey$publicKey".toMd5()
+    "$time$privateKey$publicKey".toMd5()

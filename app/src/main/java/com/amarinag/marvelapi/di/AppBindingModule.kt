@@ -22,9 +22,13 @@ abstract class AppBindingModule {
 
     @Binds
     @Singleton
-    abstract fun bindCharacterRemoteDataSource(marvelCharacterRemoteDataSource: MarvelCharacterRemoteDataSource): CharacterRemoteDataSource
+    abstract fun bindCharacterRemoteDataSource(
+        marvelCharacterRemoteDataSource: MarvelCharacterRemoteDataSource
+    ): CharacterRemoteDataSource
 
     @Binds
     @Singleton
-    abstract fun bindCharacterLocalDataSource(marvelCharacterLocalDataSource: MarvelCharacterLocalDataSource): CharacterLocalDataSource
+    abstract fun bindCharacterLocalDataSource(
+        marvelCharacterLocalDataSource: MarvelCharacterLocalDataSource
+    ): CharacterLocalDataSource
 }

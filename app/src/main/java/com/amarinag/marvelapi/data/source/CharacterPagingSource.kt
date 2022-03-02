@@ -5,6 +5,7 @@ import androidx.paging.PagingState
 import com.amarinag.marvelapi.data.network.MarvelApiService
 import com.amarinag.marvelapi.data.network.model.toModel
 import com.amarinag.marvelapi.domain.model.Character
+import java.io.IOException
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -27,6 +28,8 @@ class CharacterPagingSource @Inject constructor(
             prevKey = null,
             nextKey = response.data?.offset?.plus(response.data.limit)
         )
+    } catch (ioe: IOException) {
+        LoadResult.Error(ioe)
     } catch (ex: Exception) {
         LoadResult.Error(ex)
     }

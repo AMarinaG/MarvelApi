@@ -35,11 +35,7 @@ fun AMGMarvelNavGraph(
 
         composable(
             "${AMGMarvelDestinations.CHARACTER_DETAIL_ROUTE}/{characterId}",
-            arguments = listOf(navArgument("characterId") {
-                type = NavType.LongType
-                defaultValue = 4L
-            }
-            ),
+            arguments = listOf(navArgument("characterId") { type = NavType.LongType }),
             deepLinks = listOf(navDeepLink {
                 uriPattern =
                     "$uri/${AMGMarvelDestinations.CHARACTER_DETAIL_ROUTE}/{characterId}"
