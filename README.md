@@ -40,10 +40,6 @@ And run gradle install for open on your device
 ./gradlew iD
 ```
 
-### Test
-
-you can see a sample in "CharacterRepository" and "GetCharactersUseCase"
-
 ## Mock flavor
 environment used for faster developer and probably test
 
@@ -51,12 +47,30 @@ environment used for faster developer and probably test
 ./gradlew installMockDebug
 ```
 
-WIP MockWebServer
+## Pro flavor
+environment that used real marvelapi service
+
+```shell
+./gradlew installProDebug
+```
+
 
 ## run detekt
 ```shell
 ./gradlew detekt
 ```
+
+### Test
+execute test using
+```shell
+./gradlew check
+```
+
+Show results on 
+- app/build/reports
+- app/build/reports/detekt
+- app/build/reports/tests
+
 
 ### DeepLink enabled
 
