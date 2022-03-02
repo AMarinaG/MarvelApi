@@ -6,25 +6,25 @@ I try to convey my vision of the new architecture recommended by Google applying
 
 
 ## Stack
-- [X] Architecture MVVM
-- [X] New Recommended Google Architecture
-- [X] Using Flows
-- [X] Offline mode with Room
-- [X] Hilt
-- [X] UseCases
-- [X] Pagination
-- [X] Jetpack Compose
-- [X] mock / pro flavor
-- [X] Detekt for static code report
-- [X] Added Canary Leak
-- [X] Simple Tests
+- Architecture MVVM
+- New Recommended Google Architecture
+- Using Flows
+- Offline mode with Room
+- Hilt
+- UseCases
+- Pagination
+- Jetpack Compose
+- mock / pro flavor
+- Detekt for static code report
+- Added Canary Leak
+- Simple Tests
 
-## WishList / RoadMap
-- [ ] Animate views
-- [ ] CallAdapter for kotlin.Result<>
-- [ ] Integration test
-- [ ] More unit test coverage
-- [ ] Test UI
+### WishList / RoadMap
+- Animate views
+- CallAdapter for kotlin.Result<>
+- Integration test
+- More unit test coverage
+- Test UI
 
 ## Installation 
 
