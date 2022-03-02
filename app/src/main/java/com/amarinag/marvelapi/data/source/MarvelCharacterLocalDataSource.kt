@@ -1,9 +1,9 @@
 package com.amarinag.marvelapi.data.source
 
-import com.amarinag.marvelapi.domain.model.Character
 import com.amarinag.marvelapi.data.db.CharacterDao
 import com.amarinag.marvelapi.data.db.entity.toEntity
 import com.amarinag.marvelapi.data.db.entity.toModel
+import com.amarinag.marvelapi.domain.model.Character
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.flow
