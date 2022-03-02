@@ -124,4 +124,5 @@ dependencies {
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
 
     mockImplementation "com.squareup.okhttp3:mockwebserver:$mock_webservice_version"
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakcanary_version"
 }
