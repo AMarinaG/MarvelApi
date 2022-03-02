@@ -30,6 +30,7 @@ And run gradle install for open on your device
 - [X] Jetpack Compose
 - [X] mock / pro flavor
 - [ ] CallAdapter for Result<>
+- [ ] Detekt for static code report
 
 
 ### Test
@@ -40,6 +41,10 @@ you can see a sample in "CharacterRepository" and "GetCharactersUseCase"
 environment used for faster developer and probably test
 WIP MockWebServer
 
+## run detekt
+```shell
+./gradlew detekt
+```
 
 ### DeepLink enabled
 
