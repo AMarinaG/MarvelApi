@@ -40,6 +40,11 @@ you can see a sample in "CharacterRepository" and "GetCharactersUseCase"
 
 ## Mock flavor
 environment used for faster developer and probably test
+
+```shell
+./gradlew installMockDebug
+```
+
 WIP MockWebServer
 
 ## run detekt
