@@ -17,7 +17,7 @@ class MarvelCharacterRemoteDataSource @Inject constructor(
         try {
             Result.success(marvelApiService.getAllCharacter().data?.results.toModel())
         } catch (ex: Exception) {
-            Result.failure(IllegalArgumentException("Network Exception"))
+            Result.failure(IllegalArgumentException("Network Exception", ex))
         }
     }
 
@@ -29,7 +29,7 @@ class MarvelCharacterRemoteDataSource @Inject constructor(
                     Result.success(it)
                 } ?: Result.failure(IllegalArgumentException("Servar fails"))
             } catch (ex: Exception) {
-                Result.failure(IllegalArgumentException("Network Exception"))
+                Result.failure(IllegalArgumentException("Network Exception", ex))
             }
         }
 }

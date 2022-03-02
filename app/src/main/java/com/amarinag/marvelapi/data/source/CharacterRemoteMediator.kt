@@ -7,6 +7,7 @@ import androidx.paging.RemoteMediator
 import com.amarinag.marvelapi.data.db.entity.CharacterEntity
 import com.amarinag.marvelapi.data.network.MarvelApiService
 import com.amarinag.marvelapi.data.network.model.toModel
+import java.io.IOException
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -37,6 +38,8 @@ class CharacterRemoteMediator @Inject constructor(
                     MediatorResult.Success(endOfPaginationReached = false)
                 }
             }
+        } catch (ioe: IOException) {
+            MediatorResult.Error(ioe)
         } catch (ex: Exception) {
             MediatorResult.Error(ex)
         }

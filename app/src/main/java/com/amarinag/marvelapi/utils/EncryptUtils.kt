@@ -1,5 +1,6 @@
 package com.amarinag.marvelapi.utils
 
+import android.util.Log
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
@@ -19,8 +20,8 @@ private fun String.toMd5(): String {
             hexString.append(h)
         }
         return hexString.toString()
-    } catch (e: NoSuchAlgorithmException) {
-        e.printStackTrace()
+    } catch (nsae: NoSuchAlgorithmException) {
+        Log.e("Utils", "error: $nsae", nsae)
     }
     return ""
 }
