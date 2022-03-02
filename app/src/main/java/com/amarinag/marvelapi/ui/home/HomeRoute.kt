@@ -1,13 +1,14 @@
 package com.amarinag.marvelapi.ui.home
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.paging.ExperimentalPagingApi
+import androidx.paging.compose.collectAsLazyPagingItems
 
-@ExperimentalFoundationApi
+@ExperimentalPagingApi
 @Composable
 fun HomeRoute(homeViewModel: HomeViewModel, navigateToDetail: (Long) -> Unit) {
     val uiState by homeViewModel.uiState.collectAsState()
-    HomeScreenWithGrid(uiState, navigateToDetail)
+    HomeScreenWithList(uiState, navigateToDetail)
 }

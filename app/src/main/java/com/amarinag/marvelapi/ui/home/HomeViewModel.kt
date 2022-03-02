@@ -2,51 +2,39 @@ package com.amarinag.marvelapi.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.amarinag.marvelapi.usecase.GetCharactersUseCase
+import androidx.paging.*
+import com.amarinag.marvelapi.data.db.AMGMarvelApiDatabase
+import com.amarinag.marvelapi.data.db.entity.toModel
+import com.amarinag.marvelapi.data.source.CharacterPagingSource
+import com.amarinag.marvelapi.data.source.CharacterRemoteMediator
+import com.amarinag.marvelapi.domain.model.Character
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
-import com.amarinag.marvelapi.domain.model.Character
 
+@ExperimentalPagingApi
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val getCharactersUseCase: GetCharactersUseCase
-) :
-    ViewModel() {
-    private val _uiState = MutableStateFlow(HomeUiState(isLoading = true))
+    private val amgMarvelApiDatabase: AMGMarvelApiDatabase,
+    private val characterPagingSource: CharacterPagingSource,
+    private val characterRemoteMediator: CharacterRemoteMediator
+) : ViewModel() {
+
+    private val pagingData: Flow<PagingData<Character>> =
+        Pager(PagingConfig(20, prefetchDistance = 5), remoteMediator = characterRemoteMediator) {
+            amgMarvelApiDatabase.characterDao().findAllInPages()
+        }.flow.cachedIn(viewModelScope).map { pagingData -> pagingData.map { it.toModel() } }
+    private val _uiState = MutableStateFlow(HomeUiState(pagingData = pagingData))
     val uiState = _uiState.asStateFlow()
-
-    init {
-        viewModelScope.launch {
-            getCharactersUseCase().collect { it.fold(::onSuccess, ::onFailure) }
-        }
-    }
-
-    private fun onSuccess(data: List<Character>) {
-        _uiState.update {
-            it.copy(isLoading = false, characters = data)
-        }
-    }
-
-    private fun onFailure(throwable: Throwable) {
-        _uiState.update {
-            HomeUiState(
-                hasError = true,
-                error = throwable,
-                errorMessage = "throwableProcessor.proccess(throwable)"
-            )
-        }
-    }
 }
 
 
 data class HomeUiState(
-    val isLoading: Boolean = false,
     val hasError: Boolean = false,
     val error: Throwable? = null,
     val errorMessage: String? = null,
-    val characters: List<Character>? = null
+    val pagingData: Flow<PagingData<Character>>
 )

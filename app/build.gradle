@@ -104,7 +104,8 @@ dependencies {
 
     // optional - Paging 3 Integration
     implementation "androidx.room:room-paging:$room_version"
-
+    implementation "androidx.paging:paging-runtime:$paging_version"
+    implementation "androidx.paging:paging-compose:1.0.0-alpha14"
 
     testImplementation 'junit:junit:4.13.2'
     testImplementation "com.google.truth:truth:$truth_version"

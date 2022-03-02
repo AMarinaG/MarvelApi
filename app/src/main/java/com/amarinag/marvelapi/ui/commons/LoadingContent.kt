@@ -26,7 +26,7 @@ fun LoadingContent(
 }
 
 @Composable
-private fun DefaultLoading() {
+fun DefaultLoading(modifier: Modifier = Modifier) {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.loading))
         val progress by animateLottieCompositionAsState(composition)

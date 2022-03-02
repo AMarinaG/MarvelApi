@@ -10,11 +10,13 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import androidx.navigation.navDeepLink
+import androidx.paging.ExperimentalPagingApi
 import com.amarinag.marvelapi.ui.character.CharacterRoute
 import com.amarinag.marvelapi.ui.character.CharacterViewModel
 import com.amarinag.marvelapi.ui.home.HomeRoute
 import com.amarinag.marvelapi.ui.home.HomeViewModel
 
+@ExperimentalPagingApi
 @ExperimentalFoundationApi
 @Composable
 fun AMGMarvelNavGraph(

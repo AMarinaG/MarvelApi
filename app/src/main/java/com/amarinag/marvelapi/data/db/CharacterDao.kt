@@ -1,5 +1,6 @@
 package com.amarinag.marvelapi.data.db
 
+import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -11,6 +12,9 @@ import kotlinx.coroutines.flow.Flow
 interface CharacterDao {
     @Query("SELECT * FROM character")
     fun findAll(): Flow<List<CharacterEntity>>
+
+    @Query("SELECT * FROM character")
+    fun findAllInPages(): PagingSource<Int, CharacterEntity>
 
     @Query("SELECT * FROM character WHERE id = :characterId")
     suspend fun findById(characterId: Long): CharacterEntity?

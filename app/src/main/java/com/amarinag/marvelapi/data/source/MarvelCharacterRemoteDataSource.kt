@@ -1,9 +1,9 @@
 package com.amarinag.marvelapi.data.source
 
-import com.amarinag.marvelapi.domain.model.Character
 import com.amarinag.marvelapi.data.network.MarvelApiService
 import com.amarinag.marvelapi.data.network.model.toModel
 import com.amarinag.marvelapi.di.AppDispatchers
+import com.amarinag.marvelapi.domain.model.Character
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -33,3 +33,4 @@ class MarvelCharacterRemoteDataSource @Inject constructor(
             }
         }
 }
+
