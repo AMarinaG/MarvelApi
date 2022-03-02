@@ -8,11 +8,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
+import androidx.paging.ExperimentalPagingApi
 import com.amarinag.marvelapi.ui.theme.AMGMarvelApiTheme
 import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.insets.navigationBarsPadding
 import com.google.accompanist.insets.statusBarsPadding
 
+@ExperimentalPagingApi
 @ExperimentalFoundationApi
 @Composable
 fun AMGMarvelApp() {

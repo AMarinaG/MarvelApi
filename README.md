@@ -26,16 +26,12 @@ And run gradle install for open on your device
 - [X] Offline mode with Room
 - [X] Hilt
 - [X] UseCases
-- [ ] Unit Test coverage
-- [ ] Integration Test coverage
-- [ ] UI Test coverage
-- [ ] Pagination WIP paging 3
+- [X] Pagination
 - [X] Jetpack Compose
 - [X] mock / pro flavor
 
 
 ### Test
-WIP
 
 you can see a sample in "CharacterRepository" and "GetCharactersUseCase"
 

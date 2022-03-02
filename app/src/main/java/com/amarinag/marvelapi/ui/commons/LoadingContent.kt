@@ -33,6 +33,7 @@ fun DefaultLoading(modifier: Modifier = Modifier) {
         LottieAnimation(
             composition,
             progress,
+            modifier = modifier
         )
     }
 }
