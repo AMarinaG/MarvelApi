@@ -2,8 +2,29 @@
 
 ## Motivation
 
-Through the marvel api I have tried to carry the best practices of google for the architecture of an Android
-application
+I try to convey my vision of the new architecture recommended by Google applying the latest technologies and components
+
+
+## Stack
+- [X] Architecture MVVM
+- [X] New Recommended Google Architecture
+- [X] Using Flows
+- [X] Offline mode with Room
+- [X] Hilt
+- [X] UseCases
+- [X] Pagination
+- [X] Jetpack Compose
+- [X] mock / pro flavor
+- [X] Detekt for static code report
+- [X] Added Canary Leak
+- [X] Simple Tests
+
+## WishList / RoadMap
+- [ ] Animate views
+- [ ] CallAdapter for kotlin.Result<>
+- [ ] Integration test
+- [ ] More unit test coverage
+- [ ] Test UI
 
 ## Installation 
 
@@ -18,21 +39,6 @@ And run gradle install for open on your device
 ```bash
 ./gradlew iD
 ```
-
-### Stack
-- [X] Architecture MVVM
-- [X] New Recommended Google Architecture
-- [X] Using Flows
-- [X] Offline mode with Room
-- [X] Hilt
-- [X] UseCases
-- [X] Pagination
-- [X] Jetpack Compose
-- [X] mock / pro flavor
-- [ ] CallAdapter for Result<>
-- [X] Detekt for static code report
-- [ ] Added Canary Leak
-
 
 ### Test
 
