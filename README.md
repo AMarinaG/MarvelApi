@@ -30,7 +30,8 @@ And run gradle install for open on your device
 - [X] Jetpack Compose
 - [X] mock / pro flavor
 - [ ] CallAdapter for Result<>
-- [ ] Detekt for static code report
+- [X] Detekt for static code report
+- [ ] Added Canary Leak
 
 
 ### Test
