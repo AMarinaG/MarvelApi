@@ -23,7 +23,6 @@ class CharacterRemoteMediator @Inject constructor(
         state: PagingState<Int, CharacterEntity>
     ): MediatorResult {
         return try {
-            Log.d("MediatorResult", "loadType: $loadType")
             return when (loadType) {
                 LoadType.REFRESH -> {
                     val response = marvelApiService.getAllCharacter(offset = 0)
