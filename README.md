@@ -66,7 +66,7 @@ execute test using
 ./gradlew check
 ```
 
-Show results on 
+Show results on
 - app/build/reports
 - app/build/reports/detekt
 - app/build/reports/tests
