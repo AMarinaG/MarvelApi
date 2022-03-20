@@ -1,4 +1,8 @@
 object Versions {
+    const val agp = "7.1.2"
+    const val kotlin = "1.6.10"
+    const val detekt = "1.20.0-RC1"
+
     const val compose = "1.1.1"
     const val accompanist = "0.24.2-alpha"
     const val navigation = "2.4.1"
