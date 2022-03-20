@@ -127,6 +127,6 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:${Versions.compose}")
     debugImplementation("androidx.compose.ui:ui-tooling:${Versions.compose}")
 
-    implementation("com.squareup.okhttp3:mockwebserver:${Versions.mockWebservice}")
+    "mockImplementation"("com.squareup.okhttp3:mockwebserver:${Versions.mockWebservice}")
     debugImplementation("com.squareup.leakcanary:leakcanary-android:${Versions.leakcanary}")
 }
