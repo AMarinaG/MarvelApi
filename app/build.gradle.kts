@@ -1,10 +1,10 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
-    id("dagger.hilt.android.plugin")
-    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
-    id("io.gitlab.arturbosch.detekt")
+    id(BuildPlugins.androidApp)
+    id(BuildPlugins.kotlin)
+    id(BuildPlugins.kapt)
+    id(BuildPlugins.hilt)
+    id(BuildPlugins.secrets)
+    id(BuildPlugins.detekt)
 }
 
 android {
@@ -24,8 +24,9 @@ android {
     }
 
     buildTypes {
-        release {
+        getByName("release") {
             isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -82,51 +83,51 @@ detekt {
 dependencies {
     implementation(project(path = ":data"))
     implementation(project(path = ":domain"))
-    implementation("androidx.core:core-ktx:1.7.0")
-    implementation("androidx.compose.ui:ui:${Versions.compose}")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0")
-    implementation("androidx.compose.material:material:${Versions.compose}")
-    implementation("androidx.compose.ui:ui-tooling-preview:${Versions.compose}")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.1")
-    implementation("androidx.activity:activity-compose:1.4.0")
-    implementation("androidx.navigation:navigation-compose:${Versions.navigation}")
-    implementation("com.google.dagger:hilt-android:${Versions.hilt}")
-    implementation("androidx.hilt:hilt-navigation-compose:${Versions.hiltNavigationCompose}")
-    kapt("com.google.dagger:hilt-compiler:${Versions.hilt}")
-    implementation("io.coil-kt:coil-compose:${Versions.coil}")
-    implementation("com.airbnb.android:lottie-compose:${Versions.lottie}")
+    implementation(Deps.AndroidX.coreKtx)
+    implementation(Deps.Compose.ui)
+    implementation(Deps.Kotlin.coroutines)
+    implementation(Deps.Compose.material)
+    implementation(Deps.Compose.uiToolingPreview)
+    implementation(Deps.AndroidX.lifecycleRuntime)
+    implementation(Deps.AndroidX.activityCompose)
+    implementation(Deps.AndroidX.navigationCompose)
+    implementation(Deps.Hilt.android)
+    implementation(Deps.Hilt.navigationCompose)
+    kapt(Deps.Hilt.compiler)
+    implementation(Deps.Coil.compose)
+    implementation(Deps.Lottie.compose)
 
     // For instrumentation tests
-    androidTestImplementation("com.google.dagger:hilt-android-testing:${Versions.hilt}")
-    kaptAndroidTest("com.google.dagger:hilt-compiler:${Versions.hilt}")
-    implementation("com.squareup.retrofit2:retrofit:${Versions.retrofit}")
-    implementation("com.squareup.retrofit2:converter-gson:${Versions.retrofit}")
-    implementation("com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}")
+    androidTestImplementation(Deps.Hilt.androidTesting)
+    kaptAndroidTest(Deps.Hilt.compiler)
+    implementation(Deps.Retrofit.retrofit)
+    implementation(Deps.Retrofit.gsonConverter)
+    implementation(Deps.Retrofit.loggingInterceptor)
     // For local unit tests
-    testImplementation("com.google.dagger:hilt-android-testing:${Versions.hilt}")
-    kaptTest("com.google.dagger:hilt-compiler:${Versions.hilt}")
+    testImplementation(Deps.Hilt.androidTesting)
+    kaptTest(Deps.Hilt.compiler)
 
 
-    implementation("androidx.room:room-runtime:${Versions.room}")
-    implementation("androidx.room:room-ktx:${Versions.room}")
-    kapt("androidx.room:room-compiler:${Versions.room}")
+    implementation(Deps.Room.runtime)
+    implementation(Deps.Room.ktx)
+    kapt(Deps.Room.compiler)
 
     // optional - Test helpers
-    testImplementation("androidx.room:room-testing:${Versions.room}")
+    testImplementation(Deps.Room.testing)
     // optional - Paging 3 Integration
-    implementation("androidx.room:room-paging:${Versions.room}")
-    implementation("androidx.paging:paging-runtime:${Versions.paging}")
-    implementation("androidx.paging:paging-compose:1.0.0-alpha14")
+    implementation(Deps.Paging.paging)
+    implementation(Deps.Paging.runtime)
+    implementation(Deps.Paging.compose)
 
-    testImplementation("junit:junit:4.13.2")
-    testImplementation("com.google.truth:truth:${Versions.truth}")
-    testImplementation("io.mockk:mockk:${Versions.mockk}")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
-    implementation("com.google.accompanist:accompanist-insets:${Versions.accompanist}")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:${Versions.compose}")
-    debugImplementation("androidx.compose.ui:ui-tooling:${Versions.compose}")
+    testImplementation(Deps.junit)
+    testImplementation(Deps.truth)
+    testImplementation(Deps.mockk)
+    androidTestImplementation(Deps.AndroidX.Test.junit)
+    androidTestImplementation(Deps.AndroidX.Test.espresso)
+    implementation(Deps.Accompanist.insets)
+    androidTestImplementation(Deps.Compose.uiTestJunit)
+    debugImplementation(Deps.Compose.uiTooling)
 
-    "mockImplementation"("com.squareup.okhttp3:mockwebserver:${Versions.mockWebservice}")
-    debugImplementation("com.squareup.leakcanary:leakcanary-android:${Versions.leakcanary}")
+    "mockImplementation"(Deps.Retrofit.mockWebserver)
+    debugImplementation(Deps.leakcanary)
 }

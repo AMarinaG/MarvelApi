@@ -4,6 +4,8 @@ object Versions {
     const val detekt = "1.20.0-RC1"
 
     const val compose = "1.1.1"
+    const val activityCompose = "1.4.0"
+    const val lifecycle = "2.4.1"
     const val accompanist = "0.24.2-alpha"
     const val navigation = "2.4.1"
     const val hilt = "2.40.5"

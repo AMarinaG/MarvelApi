@@ -13,7 +13,7 @@ dependencies {
     implementation(project(path = ":domain"))
     implementation(Deps.Kotlin.stdlib)
     implementation(Deps.Kotlin.coroutines)
-    implementation(Deps.AndroidX.pagingCommon)
+    implementation(Deps.Paging.common)
     testImplementation(Deps.junit)
     testImplementation(Deps.truth)
     testImplementation(Deps.mockk)
