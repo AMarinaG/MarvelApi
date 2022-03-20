@@ -96,6 +96,7 @@ dependencies {
     kapt(Deps.Hilt.compiler)
     implementation(Deps.Coil.compose)
     implementation(Deps.Lottie.compose)
+    implementation(Deps.AndroidX.splashscreen)
 
     // For instrumentation tests
     androidTestImplementation(Deps.Hilt.androidTesting)

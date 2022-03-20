@@ -24,6 +24,7 @@ object Deps {
 
     object AndroidX {
         val coreKtx by lazy { "androidx.core:core-ktx:1.7.0" }
+        val splashscreen by lazy { "androidx.core:core-splashscreen:${Versions.coreSplashscreen}" }
         val activityCompose by lazy { "androidx.activity:activity-compose:${Versions.activityCompose}" }
         val lifecycleRuntime by lazy { "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}" }
         val navigationCompose by lazy { "androidx.navigation:navigation-compose:${Versions.navigation}" }

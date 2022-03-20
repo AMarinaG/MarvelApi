@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="Theme.AMGMarvelApi.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#C18F47</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="windowSplashScreenAnimationDuration">@android:integer/config_mediumAnimTime</item>
+        <item name="postSplashScreenTheme">@style/Theme.AMGMarvelApi</item>
+    </style>
+
     <style name="Theme.AMGMarvelApi" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:statusBarColor">@color/purple_700</item>
+        <item name="android:statusBarColor">#C18F47</item>
     </style>
 </resources>

@@ -20,4 +20,5 @@ object Versions {
     const val mockWebservice = "5.0.0-alpha.2"
     const val paging = "3.1.0"
     const val leakcanary = "2.8.1"
+    const val coreSplashscreen = "1.0.0-beta01"
 }
