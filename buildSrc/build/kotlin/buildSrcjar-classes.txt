@@ -1,0 +1,1 @@
+/Users/amarinag/Projects/AMarinaG/AMGMarvelApi/buildSrc/build/classes/kotlin/main/BuildPlugins.class:/Users/amarinag/Projects/AMarinaG/AMGMarvelApi/buildSrc/build/classes/kotlin/main/Versions.class

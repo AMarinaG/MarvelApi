@@ -3,6 +3,7 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.7">
       <module name="AMG_-_MarvelApi.app" target="11" />
+      <module name="AMG_-_MarvelApi.buildSrc" target="11" />
       <module name="AMG_-_MarvelApi.data" target="1.8" />
     </bytecodeTargetLevel>
   </component>
